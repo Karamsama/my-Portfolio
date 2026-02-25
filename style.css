@@ -19,7 +19,7 @@ body {
     --border-color: #2a2a2a;
 }
 
-/* Improved Text Readability */
+
 p, .text-muted {
     color: #d0d0d0 !important;
     line-height: 1.8;
@@ -520,13 +520,12 @@ footer p {
     }
 }
 
-/* Ensure images are responsive */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Responsive tables and forms */
+
 .table-responsive {
     overflow-x: auto;
 }
