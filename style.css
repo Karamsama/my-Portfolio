@@ -107,6 +107,18 @@ p, .text-muted {
     color: #000000;
 }
 
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.hero-buttons .btn {
+    min-width: 200px;
+}
+
 .hero-section h1 {
     animation: fadeInUp 1s ease;
 }
@@ -289,6 +301,16 @@ p, .text-muted {
     transform: translateY(-2px);
 }
 
+.social-links {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
 .social-links a {
     width: 50px;
     height: 50px;
@@ -300,6 +322,7 @@ p, .text-muted {
     background-color: var(--card-bg);
     border-color: var(--cyan) !important;
     color: var(--cyan) !important;
+    flex-shrink: 0;
 }
 
 .social-links a:hover {
@@ -307,6 +330,18 @@ p, .text-muted {
     background-color: var(--cyan) !important;
     color: #000000 !important;
     box-shadow: 0 5px 20px rgba(0, 217, 255, 0.4);
+}
+
+#contact .mt-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#contact .mt-4 .btn {
+    width: 100%;
+    max-width: 400px;
 }
 
 /* Footer */
@@ -365,12 +400,19 @@ footer p {
         margin-bottom: 2rem;
     }
     
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero-buttons .btn,
     .hero-section .btn {
         font-size: 0.95rem;
         padding: 10px 20px;
-        margin-bottom: 10px;
         width: 100%;
-        max-width: 250px;
+        max-width: 280px;
+        margin: 0;
+        min-width: auto;
     }
     
     section {
@@ -408,11 +450,29 @@ footer p {
     .project-card {
         margin-bottom: 1.5rem;
     }
+
+    .social-links {
+        max-width: 50px;
+        gap: 8px;
+    }
     
     .social-links a {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
+    }
+    
+    #contact .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 5px auto;
+        display: block;
+    }
+    
+    #contact .mt-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .navbar-brand {
@@ -440,9 +500,17 @@ footer p {
         font-size: 1rem;
     }
     
+    .hero-buttons {
+        gap: 10px;
+    }
+    
+    .hero-buttons .btn,
     .hero-section .btn {
         font-size: 0.9rem;
-        padding: 8px 16px;
+        padding: 10px 16px;
+        width: 90%;
+        max-width: 280px;
+        min-width: auto;
     }
     
     h2 {
@@ -480,11 +548,23 @@ footer p {
         font-size: 1rem;
     }
     
+    
+    
     .social-links a {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         font-size: 1rem;
-        margin: 5px;
+    }
+    
+    #contact .btn {
+        width: 90%;
+        max-width: 280px;
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+    
+    #contact .mt-4 {
+        gap: 12px;
     }
     
     footer p {
@@ -504,6 +584,20 @@ footer p {
     
     .hero-section .lead {
         font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .hero-buttons {
+        gap: 8px;
+    }
+    
+    .hero-buttons .btn,
+    .hero-section .btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        width: 95%;
+        max-width: none;
+        min-width: auto;
     }
     
     #about img {
@@ -517,6 +611,32 @@ footer p {
     
     .navbar-brand {
         font-size: 1.1rem;
+    }
+    
+    .skill-item {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+    
+    #contact .btn {
+        width: 95%;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+    
+    .social-links {
+        width: 40px;
+        gap: 6px;
+    }
+    
+    .social-links a {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+    
+    #contact .mt-4 {
+        gap: 10px;
     }
 }
 
