@@ -1,54 +1,22 @@
-
-
 const EMAILJS_PUBLIC_KEY = 'Huusjtx6Np0vhqciw'; 
 const EMAILJS_SERVICE_ID = 'service_fjk1t2p'; 
 const EMAILJS_TEMPLATE_ID = 'template_ponk3uo'; 
-
 
 if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
     emailjs.init(EMAILJS_PUBLIC_KEY);
 }
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            
-          
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-            }
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+            new bootstrap.Collapse(navbarCollapse).hide();
         }
     });
 });
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= (sectionTop - 100)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Contact form 
+// Contact form
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -58,7 +26,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const message = document.getElementById('message').value;
     const submitBtn = this.querySelector('button[type="submit"]');
     
- 
     if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
         alert('Please configure EmailJS credentials in script.js to enable email functionality.\n\nVisit: https://www.emailjs.com/');
         return;
@@ -67,13 +34,11 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
     
-    // Add timeout to prevent hanging
     const timeoutId = setTimeout(() => {
         alert('Request is taking longer than expected. Please check your internet connection or try again.');
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Message';
-    }, 10000); // 10 second timeout
-    
+    }, 10000);
 
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         from_name: name,
@@ -83,17 +48,14 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         to_name: 'Karam', 
     })
     .then(function(response) {
-         clearTimeout(timeoutId);
-   
+        clearTimeout(timeoutId);
         alert(`Thank you, ${name}! Your message has been sent successfully. I'll get back to you soon.`);
         document.getElementById('contactForm').reset();
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Message';
     })
     .catch(function(error) {
-        // Clear timeout
         clearTimeout(timeoutId);
-        // Error
         alert('Oops! Something went wrong. Please check:\n- Your EmailJS credentials are correct\n- Your internet connection\n- EmailJS service is active\n\nError: ' + (error.text || error.message || 'Unknown error'));
         console.error('EmailJS Error:', error);
         submitBtn.disabled = false;
@@ -101,11 +63,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     });
 });
 
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// Scroll animation for project cards and skill items
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -113,7 +71,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.project-card, .skill-item').forEach(el => {
     el.style.opacity = '0';
